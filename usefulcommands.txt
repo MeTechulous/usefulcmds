@@ -46,6 +46,9 @@
 # Add User to Group
 	usermod -a -G [group] [user]
 	usermod -a -G [group1],[group2],[group3] [user]
+	gpasswd -a [user] [group]
+# Remove User from Group
+	gpasswd -d [user] [group]
 # Delete Group
 	groupdel [group]
 # Delete User
