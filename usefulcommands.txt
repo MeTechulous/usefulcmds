@@ -1,0 +1,92 @@
+
+~~~~~~~~~ USER ACCOUNT CONFIGURATION ~~~~~~~~~
+
+# Change User Password
+	passwd [username]
+# List User Accounts
+	cat /etc/passwd
+	getent passwd
+	# 'x' after username means password is encrypted and stored in /etc/shadow
+
+~~~~~~~~~ MANAGE PERMISSIONS ~~~~~~~~~
+
+# Permissions
+	
+	-[---][---][---] [user] [group]
+	|  |    |    |     |       |
+	|  |    |    |     |       +----------- Group
+	|  |    |    |     +------------------- Owner
+	|  |    |    +------------------------- Alternate/Other
+	|  |    +------------------------------ Group Permissions
+	|  +----------------------------------- Owner Permissions
+	+-------------------------------------- File Type
+
+	u - File Owner
+	g - Members of Group
+	o - All Other Users
+	a - All Users
+
+	- - Removes Permission
+	+ - Adds Permission
+	= - Set Permission
+
+	r - Read
+	w - Write
+	x - Execute
+
+# List Permissions
+	ls -l
+# List Groups
+	groups
+	getent group
+# List Groups a User Belongs to
+	groups [user]
+# Add a New Group
+	groupadd [group_name]
+# Add User to Group
+	usermod -a -G [group] [user]
+	usermod -a -G [group1],[group2],[group3] [user]
+# Delete Group
+	groupdel [group]
+# Delete User
+	userdel [user]
+	userdel -r [user]
+		# Removes Home Directory
+# Change Primary Group for User
+	usermod -g [group] [user]
+# Change Owner for File/Directory
+	chown [user] [target]
+# Change Owner & Group for File/Directory
+	chown [user]:[group] [target]
+# Change Group of File/Directory
+	chgrp [group] [target]
+	chgrp -R [group] [directory]
+		# Makes changes Recursively
+
+~~~~~~~~~ FILE MANIPULATION ~~~~~~~~~
+
+# Search for String
+	| grep [value]
+
+~~~~~~~~~ METASPLOIT ~~~~~~~~~
+
+# Start MSF DB and run Console
+	systemctl start postgresql
+	msfdb init
+	msfconsole
+# Scan for Systems/Ports
+	db_nmap -sV [IP Address]
+# Set Remote and Local Host
+	set LHOST [your IP]
+	set RHOST [target IP]
+# Set Payload to use
+	set PAYLOAD [payload]
+# Directory of Exploits and Tools
+	/usr/share/metasploit-framework/modules
+# Exploit system once Payload, RHOST, LHOST, and Exploit have been set
+	exploit
+	run -j (runs as job)
+# Meterpreter - load mimikatz
+	load kiwi
+
+
