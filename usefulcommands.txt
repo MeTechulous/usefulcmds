@@ -73,10 +73,20 @@
 
 ~~~~~~~~~ SYSTEM RECON ~~~~~~~~~
 
+--- SMBCLIENT ---
+
 # View SMB Users if Port 445 is Open
 	smbclient -N -L \\\\[IP ADDR]\\
 # Access Share
 	smbclient -N \\\\[IP ADDR]\\[SHARE_NAME]
+
+--- IMPACKET (SQL) ---
+
+#Connect to SQL Server as User
+	mssqlclient.py [USER]/sql_svc@[IP ADDR] -windows-auth
+
+@ Reveal Current SQL User has SysAd Privileges
+	SELECT IS_SRVROLEMEMBER ('sysadmin')
 
 ~~~~~~~~~ METASPLOIT ~~~~~~~~~
 
