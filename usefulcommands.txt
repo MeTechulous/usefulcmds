@@ -71,6 +71,13 @@
 # Search for String
 	| grep [value]
 
+~~~~~~~~~ SYSTEM RECON ~~~~~~~~~
+
+# View SMB Users if Port 445 is Open
+	smbclient -N -L \\\\[IP ADDR]\\
+# Access Share
+	smbclient -N \\\\[IP ADDR]\\[SHARE_NAME]
+
 ~~~~~~~~~ METASPLOIT ~~~~~~~~~
 
 # Start MSF DB and run Console
